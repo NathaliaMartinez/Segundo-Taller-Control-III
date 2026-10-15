@@ -1,1 +1,100 @@
 
+# Ecuaciones de Espacio de Estados en MATLAB
+
+## 1. Descripción del ejercicio
+
+Se plantea el modelo de espacio de estados de un sistema electromecánico compuesto por un circuito eléctrico y una masa sometida a la gravedad.
+
+## 2. Variables de estado
+
+- `x1 = i`: corriente eléctrica.
+- `x2 = h`: posición vertical.
+- `x3 = dh/dt`: velocidad vertical.
+- `E`: tensión de entrada.
+- `R`: resistencia eléctrica.
+- `L(h)`: inductancia dependiente de la posición.
+- `m`: masa del cuerpo.
+- `g`: aceleración de la gravedad.
+- `dLdh`: derivada de la inductancia respecto a la posición.
+
+## 3. Desarrollo de las ecuaciones
+
+### Primera ecuación: circuito eléctrico
+
+Aplicando la ley de voltajes de Kirchhoff:
+
+`E = R*i + L(h)*di/dt + i*(dL/dh)*dh/dt`
+
+Despejando la derivada de la corriente:
+
+`dx1/dt = (E - R*x1 - x1*dLdh*x3)/L(h)`
+
+### Segunda ecuación: posición
+
+La derivada de la posición corresponde a la velocidad:
+
+`dx2/dt = x3`
+
+### Tercera ecuación: movimiento de la masa
+
+Usando la segunda ley de Newton y la convención de signos adoptada:
+
+`dx3/dt = g + (x1^2*dLdh)/(2*m)`
+
+## 4. Código MATLAB
+
+Guardar el siguiente código en el archivo `espacio_estados.m`.
+
+```matlab
+clc;
+clear;
+close all;
+
+% ECUACIONES DE ESPACIO DE ESTADOS
+% Sistema electromecanico
+
+% Variables de estado:
+% x1 = i       Corriente electrica
+% x2 = h       Posicion vertical
+% x3 = dh/dt   Velocidad vertical
+
+% Ecuacion electrica
+% dx1/dt = (E - R*x1 - x1*dLdh*x3)/L(h)
+
+% Ecuacion de posicion
+% dx2/dt = x3
+
+% Ecuacion mecanica
+% dx3/dt = g + (x1^2*dLdh)/(2*m)
+
+disp('ECUACIONES DE ESPACIO DE ESTADOS');
+disp(' ');
+disp('dx1/dt = (E - R*x1 - x1*dLdh*x3)/L(h)');
+disp('dx2/dt = x3');
+disp('dx3/dt = g + (x1^2*dLdh)/(2*m)');
+```
+
+## 5. Explicación del código
+
+1. `clc` limpia la ventana de comandos.
+2. `clear` elimina las variables almacenadas.
+3. `close all` cierra las ventanas gráficas.
+4. Se documentan las variables de estado del sistema.
+5. Se escriben las tres ecuaciones diferenciales.
+6. Los comandos `disp` muestran las ecuaciones en la ventana de comandos.
+
+## 6. Ejecución
+
+1. Abrir MATLAB.
+2. Crear un nuevo script.
+3. Pegar el código.
+4. Guardarlo como `espacio_estados.m`.
+5. Ejecutarlo con el botón Run.
+
+## 7. Observación
+
+El modelo supone que la inductancia depende de la posición vertical. La expresión exacta de la inductancia y la convención de signos de la fuerza magnética deben verificarse con el enunciado original antes de considerar estas ecuaciones como definitivas.
+```
+
+**Para subirlo a GitHub:** crea un repositorio, abre el archivo `README.md`, selecciona editar y pega el contenido. Así quedarán visibles el desarrollo, las ecuaciones y el código en tu proyecto.
+
